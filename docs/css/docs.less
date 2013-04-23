@@ -1,0 +1,872 @@
+/** 
+ * F2 Docs
+ * 
+ * lessc .\less\bootstrap.less > .\docs.css
+ * lessc --compress .\less\bootstrap.less > .\docs.css
+ */
+
+//variables
+@headerHeight: 37px;
+
+//utils for responsive stuff
+//http://css-tricks.com/places-its-tempting-to-use-display-none-but-dont/
+.hideVisually {
+	position: absolute; 
+	overflow: hidden; 
+	clip: rect(0 0 0 0); 
+	height: 1px; 
+	width: 1px; 
+	margin: -1px; 
+	padding: 0;
+	border: 0;
+}
+
+.unhideVisually {
+	position: static;
+	overflow: auto;
+	clip: none;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+//for font-awesome icons
+//when it's just an icon with an anchor around it
+a > i {
+	text-decoration: none;
+	.transition(none);
+	//color: @black;
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+//slowly transition to lighter blue when hovering links
+a {
+	.transition(color 0.3s linear);//fade in on-hover
+}
+
+.dropdown-menu {
+	a {
+		.transition(none);
+	}
+}
+
+[data-hide="minWidth979"] {
+	.hideVisually();
+}
+
+//move something down
+.bumpDown {
+	margin-top: 25px;
+}
+
+//reset headings for this particular font-family
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+h1 { font-size: @baseFontSize * 2.4; } 
+h2 { font-size: @baseFontSize * 2.15; }
+h3 { font-size: @baseFontSize * 1.75; } 
+h4 { font-size: @baseFontSize * 1.25; } 
+h5 { font-size: @baseFontSize; }
+h6 { font-size: @baseFontSize * 0.85; } 
+
+//select text
+/*
+::selection { 
+	background: @f2blue; color: @white; //Safari and Opera 
+}
+::-moz-selection { 
+	background: @f2blue; color: @white;//Firefox
+}
+*/
+
+header {
+	background-color: @white;
+	border-top: 2px solid @f2blue;
+	border-bottom: 1px solid #e0e0e0;
+	text-shadow: 0 1px 0 #fff;
+	.box-shadow(0 0 5px rgba(0,0,0,.15));
+	
+	.container {
+		.clearfix();
+	}
+
+	#logo {
+		display: block;
+		padding-left: 66px;
+		padding-top: @headerHeight/2;
+		height: @headerHeight;
+		font-size: 20px;
+		vertical-align: middle;
+		background: transparent url('../img/F2_logo.png') left center no-repeat;
+		margin-top: 10px;
+		margin-bottom: 15px;
+		text-decoration: none;
+		color: @textColor;
+	}
+
+	nav {
+		font-size: 13px;
+		padding-top: (@headerHeight/2) + 3; //magic #, eh
+		height: @headerHeight;
+		line-height: @headerHeight;
+
+		ul {
+			margin: 0;
+		}
+		
+		li {
+			display: inline;
+		}
+
+		li + li {
+			padding-left: 18px;
+		}
+
+		li.active {
+			a {
+				font-weight: bold;
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}
+
+#authenticatedInfo {
+	font-size: 12px;
+	text-align: right;
+	margin-top: 5px;
+	margin-right: 5px;
+}
+
+.media-list.landing {
+	a {
+		width: 25px;
+		height: 25px;
+		text-align: center;
+	}
+
+	i {
+		font-size: 25px;
+	}
+
+	.moder {
+		.media {
+			i {
+				font-size: 16px;
+			}
+			
+			.media-heading {
+				font-size: 90%;
+			}
+		}
+		.media-body .media {
+			margin-top: 2px;
+		}
+	}
+}
+
+.page-wrapper {
+	margin-top: 10px;
+	padding-bottom: 60px;
+
+	//this makes TwBs grid work with our span9
+	//in two cols on the Manage Containers & Apps page
+	//because we have 2 span4s with a span1 in the middle
+	//and the right-side span4 touches the edge, so we need
+	//to pull it in a bit
+	.span1 + .span4 {
+		margin-left: 5px;
+	}
+}
+
+//top/side right of home/landing page
+.homeNav {
+	.border-radius(5px);
+	background-color: @white;
+	.box-shadow(0 0 5px rgba(0,0,0,.15));
+
+	li {
+		border-bottom: 1px solid @grayLighter;
+	}
+
+	li:last-child {
+		border-bottom: 0;
+	}
+
+	a {
+		display: block;
+		padding: 10px 15px;
+		color: @f2blue;
+		.transition(background 0.25s linear);//fade in on-hover
+	}
+
+	a h5 {
+		font-weight: bold;
+		margin: 0;
+	}
+
+	a p {
+		margin: 0;
+		font-size: 90%;
+		color: @gray;
+	}
+
+	a:hover {
+		text-decoration: none;
+		background-color: @grayLighter;
+	}
+}
+
+.sidebar-nav {
+
+	margin-top: 10px;
+	margin-left: 10px;
+
+	.nav-tabs > li:first-child a,
+	.nav-tabs > li.first a {
+		font-weight: bold;
+		color: @grayDark;
+		padding-left: 12px;
+		cursor: default;
+	}
+
+	.nav-tabs > li:first-child a:hover,
+	.nav-tabs > li.first a:hover {
+		background-color: @white;
+	}
+
+	.nav-tabs > li > a {
+		color: @f2blue;
+		border-left: 4px solid @f2blue;
+		padding-left: 22px;
+	}
+
+	.nav-tabs > li > a:hover {
+		border-left-color: @f2blue;
+		border-left: 4px solid @f2blue;
+	}
+
+	.nav-tabs > .active > a,
+	.nav-tabs > .active > a:hover {
+		background-color: #ddd;
+		color: @f2blue;
+	}
+
+	.nav-tabs [class^="icon-"], 
+	[class*=" icon-"] {
+		color: @black;
+		.opacity(50);
+	}
+
+	.nav-tabs > .active [class^="icon-"], 
+	[class*=" icon-"] {
+		.opacity(100);
+	}
+
+}
+
+.latestCode {
+
+	margin-top: 20px;
+	margin-bottom: 20px;
+
+	.span12 {
+		.border-radius(5px);
+		background-color: @f2blue;
+		font-size: 16px;
+		color: @white;
+		font-weight: lighter;
+		.transition(background 0.25s linear);//fade in on-hover
+		.box-shadow(0 0 5px rgba(0,0,0,.15));
+	}
+
+	.span12:hover {
+		//background-color: @blueDark;
+		//.buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+	}
+
+	.span3 {
+		text-align: center;
+		padding: 20px 0;
+	}
+
+	.largeCode {
+		#font > #family > .monospace;
+	}
+
+	a {
+		color: @white;
+		text-decoration: underline;
+	}
+
+	a:hover{
+		text-decoration: none;
+	}
+}
+
+.pageArea {
+
+	.page-wrapper();
+
+	.span12 {
+		.border-radius(5px);
+		.box-shadow(0 0 5px rgba(0,0,0,.15));
+		background-color: @white;
+		min-height: 500px;
+	}
+
+	.indented {
+		padding: 0 15px;
+	}
+
+	.span9 .lead,
+	.span9 p,
+	.span9 ul {
+		padding-right: 15px;
+	}
+
+	/*
+	.span9 fieldset,*/
+	.span9 .prettyprint,
+	.span9 .alert {
+		margin-right: 15px;
+	}
+
+	.page-header {
+		.clearfix();
+		a {
+			.pull-right();
+			margin-top: 15px;
+			margin-right: 15px;
+		}
+	}
+}
+
+.apipage {
+	h4 {
+		margin-top: 30px;
+	}
+}
+
+article time {
+	font-size: 12px;
+	color: @grayLight;
+}
+
+.media {
+	.media-object-link {
+		height: 40px;
+		width: 40px;
+	}
+}
+
+.columnHeader {
+
+	.clearfix();
+	border-bottom: 1px solid #eee;
+	margin-bottom: 15px;
+
+	h3 {
+		.pull-left();
+		margin: 0;
+		font-size: 20px;
+	}
+
+	.btn-toolbar {
+		.pull-right();
+	}
+}
+
+.f2info {
+
+	.border-radius(5px);
+
+	.media-heading {
+		.clearfix();
+	}
+
+/*
+	.dropdown-menu > li > a {
+		font-size: 90%;
+		line-height: 14px;
+	}
+
+	.active .dropdown-menu > li > a {
+		font-size: 100%;
+		line-height: 20px;
+	}
+*/
+	.btn-link {
+		color: @grayLight;
+		text-decoration: none;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	code {
+		color: @gray;
+		font-size: 90%;
+	}
+}
+
+//within dropdowns, <a class=danger> will look like a danger button when hovered
+.dropdown-menu > li > a.danger:hover {
+	.buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
+}
+
+//when containers or apps == 0, show user big button to start adding
+.containsZeroItems {
+	position: relative;
+
+	.addNew {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+		text-align: center;
+
+		a {
+			//find vertical center
+			margin-top: (162px/2 - 20); // 162==bg image height, 20==large button height
+		}
+	}
+}
+
+.textareaCode {
+	font-family: @monoFontFamily;
+	font-size: 12px;
+	width: 95%;
+}
+
+#appViewModal, 
+#appConfigModal {
+
+	section {
+		min-height: 40px;//for loading spinner
+	}
+
+	textarea.code {
+		.textareaCode();
+	}
+
+	.nav {
+		margin-bottom: 10px;
+	}
+}
+
+form .help-block, 
+form .help-inline {
+	font-size: 12px;
+}
+
+fieldset.views {
+
+	//for custom view checkbox on step 3 of app registration
+	.input-prepend {
+		margin-left: 10px;
+		padding-top: 5px;
+	}
+}
+
+//on Account page, this field as a prepended "@"
+#DeveloperGitHubUserName {
+	width: 179px;
+}
+
+p.lead {
+	code {
+		font-size: 16px;
+		font-weight: 200;
+		color: @gray;
+	}
+}
+
+#addAppIntro.modal {
+	width: 660px;
+}
+
+.thumbnails {
+
+	.span3 + .span3 {
+		margin-left: 10px;
+	}
+
+	p {
+		font-size: 90%;
+	}
+
+	a {
+		display: block;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	[class*="icon"] {
+		font-size: 125px;
+		display: block;
+		margin: 0 auto;
+		color: @f2blue;
+	}
+
+	.icon-book {
+		color: #b1e27e;
+	}
+
+	.icon-wrench {
+		color: #fabb5d;
+	}
+
+	.icon-road {
+		color: @f2blue;
+	}
+
+	.icon-sitemap {
+		color: @grayDark;
+	}
+}
+
+footer {
+	.pull-right {
+		text-align: right;
+	}
+}
+
+.loading {
+	position: relative;
+}
+
+.loading-indicator {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background: @white url(../img/spinner.gif) center center no-repeat;
+	visibility: hidden;
+	min-height: 150px;
+}
+
+.loading > .loading-indicator {
+	visibility: visible;
+	.opacity(50);
+}
+
+// must use div.tagging because of IE+respond.js
+div.tagging {
+	background-color: @inputBackground;
+	border: 1px solid @inputBorder;
+	.border-radius(@inputBorderRadius);
+	.box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+	color: @gray;
+	display: inline-block;
+	font-size: @baseFontSize;
+	margin-bottom: @baseLineHeight / 2;
+	margin-left: 0;
+	padding: 2px 6px;
+	.transition(~"border linear .2s, box-shadow linear .2s");
+	vertical-align: middle;
+
+	.list {
+		list-style: none;
+		margin-left: 0;
+	}
+
+	.list-item {
+		float: left;
+		padding: 2px 3px;
+	}
+
+	.remove {
+		color: inherit;
+	}
+
+	input,
+	input:hover,
+	input:active,
+	input:focus {
+		border: 0;
+		box-shadow: none;
+		padding: 0;
+		outline:0px !important;
+		-webkit-appearance:none;
+	}
+}
+
+//****************************************************************************
+//RESPONSIVE 
+
+
+//retina
+@media only screen and (-webkit-min-device-pixel-ratio:2){
+	header #logo {
+		background-size: 52px 34px;
+		background-image: url('../img/F2_logo@2x.png');
+	}
+}
+
+@media (min-width: 1200px){
+
+	[data-hide="minWidth979"] {
+		.unhideVisually();
+	}
+
+	//this makes TwBs grid work with our span9
+	//in two cols on the Manage Containers & Apps page
+	//because we have 2 span4s with a span1 in the middle
+	//and the right-side span4 touches the edge, so we need
+	//to pull it in a bit
+	.page-wrapper {
+		.span1 + .span4 {
+			margin-left: 15px;
+		}
+	}
+
+	//when containers or apps == 0, show user big button to start adding
+	.containsZeroItems {
+		.addNew {
+			a {
+				//find vertical center
+				margin-top: (201px/2 - 20); // 201==bg image height, 20==large button height
+			}
+		}
+	}
+
+	//on Account page, this field as a prepended "@"
+	#DeveloperGitHubUserName {
+		width: 228px;
+	}
+
+	.thumbnails {
+		.span3 + .span3 {
+			margin-left: 20px;
+		}
+		p {
+			font-size: 100%;
+		}
+	}
+}
+
+//979 breakpoint
+@media (min-width: 768px) and (max-width: @navbarCollapseWidth) {
+	
+	[data-hide="minWidth768"] {
+		.hideVisually();
+	}
+
+	header {
+		#logo {
+			font-size: 18px;
+		}
+		nav {
+			font-size: 12px;
+			li + li {
+				padding-left: 14px;
+			}
+		}
+	}
+
+	.latestCode {
+		.span12 {
+			font-size: 13px;
+		}
+	}
+
+	.sidebar-nav {
+		font-size: 13px;
+	}
+
+	//this makes TwBs grid work with our span9
+	//in two cols on the Manage Containers & Apps page
+	//because we have 2 span4s with a span1 in the middle
+	//and the right-side span4 touches the edge, so we need
+	//to pull it in a bit
+	.page-wrapper {
+		.span1 {
+			width: 15px;
+			height: 0;
+			margin: 0;
+		}
+		.span1 + .span4 {
+			margin-left: 20px;
+		}
+	}
+
+	//when containers or apps == 0, show user big button to start adding
+	.containsZeroItems {
+		.addNew {
+			a {
+				//find vertical center
+				margin-top: (137px/2 - 20); // 137==bg image height, 20==large button height
+				//override btn-large
+				.btn();
+				.btn-success();
+			}
+		}
+	}
+
+	//on Account page, this field as a prepended "@"
+	#DeveloperGitHubUserName {
+		width: 124px;
+	}
+
+	.thumbnails {
+		.span3 + .span3 {
+			margin-left: 5px;
+		}
+
+		.caption {
+			padding: 6px;
+		}
+
+		h3 {
+			font-size: 18px;
+		}
+
+		p {
+			font-size: 80%;
+		}
+
+		[class*="icon"] {
+			font-size: 100px;
+		}
+
+		img {
+			height: 102px;
+		}
+	}
+
+	#twitter-timeline {
+		.hideVisually();
+	}
+
+}
+
+//tablets & smaller
+@media (max-width: 767px){
+
+	body {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	[data-hide="minWidth768"] {
+		.hideVisually();
+	}
+
+	[data-hide="minWidth979"] {
+		.unhideVisually();
+	}
+
+	.hdr,
+	.container {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.latestCode {
+		.span12 {
+			font-size: 16px;
+		}
+		.span3 {
+			border-bottom: 1px solid @blueDark;
+		}
+		.span3:last-child {
+			border-bottom-width: 0;
+		}
+	}
+
+	//util
+	.addedLRPadding {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.page-wrapper {
+		.addedLRPadding();
+	}
+
+	.sidebar-nav {
+		margin-right: 10px;
+	}
+
+	.pageArea {
+
+		.span9 {
+			
+			.page-header {
+				.addedLRPadding();
+
+				//keep really long H2s (which may contain ContainerIDs or AppIDs) from busting out of their container
+				h2 {
+					word-wrap: break-word;
+				}
+			}
+
+			.lead {
+				padding-right: 0;
+			}
+
+			.span9 .alert,
+			.span9 fieldset {
+				margin-right: 0;
+			}
+		}
+	}
+
+	#addAppIntro.modal {
+		width: auto;
+	}
+
+	//when containers or apps == 0, show user big button to start adding
+	.containsZeroItems {
+		.addNew {
+			a {
+				//override btn-large
+				.btn();
+				.btn-success();
+			}
+		}
+	}
+
+	//on Account page, this field as a prepended "@"
+	#DeveloperGitHubUserName {
+		width: 100%;
+	}
+
+	.thumbnails {
+		.span3 + .span3 {
+			margin-left: inherit;
+		}
+	}
+
+	#twitter-timeline {
+		.hideVisually();
+	}
+}
+
+@media (max-width: 480px) {
+
+
+	//when containers or apps == 0, show user big button to start adding
+	.containsZeroItems {
+		.addNew {
+			a {
+				//find vertical center
+				margin-top: (144px/2 - 20); // 144==bg image height, 20==button height
+			}
+		}
+	}
+
+}
+
+@import "./prettify.less";

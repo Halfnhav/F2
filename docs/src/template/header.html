@@ -1,80 +1,50 @@
-<header class="openf2Header navbarmini clearfix">
-  <nav class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse.main-nav">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-triangleDown"></span>
-        </button>
-        <a class="brand" href="http://www.openf2.org"></a>
-        <div class="tagline-divider"></div>
-        <div class="navbar-text pull-left">The Open Financial Framework</div>
-        <div class="collapse nav-collapse main-nav">
-          <ul class="nav pull-right">
-            <li><a href="http://www.openf2.org">Home</a></li>
-            <li class="divider-vertical"></li>
-            <li class="active">
-                <a href="http://docs.openf2.org">Docs <i class="icon-triangleDown"></i></a>
-                  <ul class="nav navinset">
-                    <li><a href="./">The Basics</a></li>
-                    <li><a href="app-development.html">Development</a></li>
-                    <li><a href="./sdk/">Reference</a></li>
-                  </ul>
-            </li>
-            <li class="divider-vertical"></li>
-            <li><a href="http://www.openf2.org/Examples">Examples</a></li>
-            <li class="divider-vertical"></li>
-            <li><a href="https://developer.openf2.org">Developer</a></li>
-            <li class="divider-vertical"></li>
-            <li><a href="http://blog.openf2.org" target="_blank">Blog</a></li>
-            <li class="divider-vertical"></li>
-            <li class="ghWrap"><a class="gitHubLink" href="https://github.com/OpenF2/F2/"><strong>VIEW </strong><span class="onDecoration">ON</span><strong> GITHUB</strong><span class="F2VersionIndicator">v 1.1.1</span></a></li>
-            <li class="ghWrapResp"><a href="https://github.com/OpenF2/F2/">View on GitHub (v 1.1.1)</a></li>
+<header>
+    <div class="container">
+      <div class="pull-left"><a id="logo" href="/">Docs</a></div>
+      <div class="pull-right">
+        <nav>         
+          <ul class="unstyled">
+            <li data-hide="minWidth768"><a href="http://developer-openf2.markitqa.com/">Home</a></li>
+            <li class="active"><a href="http://developer-openf2.markitqa.com/Manage">Manage Containers &amp; Apps</a></li>
+            <li><a href="http://developer-openf2.markitqa.com/Resources">Resources</a></li>
+            <li data-hide="minWidth768"><a href="http://docs.openf2.org" target="_blank">Docs</a></li>
+            <li data-hide="minWidth768"><a href="http://blog.openf2.org" target="_blank">Blog</a></li>
+            <li><a href="http://developer-openf2.markitqa.com/Account/Logout" title="Logout"><i class="icon-signout icon-large"></i></a></li>
           </ul>
-        </div>
+        </nav>
       </div>
     </div>
+  </header>
 
-    <div class="navbar-docs">
-      <nav class="container">
+  <div class="container page-wrapper">
+            
+    <div class="row pageArea">
+      <div class="span12">
         <div class="row">
-          <div class="span12">
-              <ul class="unstyled clearfix">
-                <li class="basics"><a href="./">The Basics</a></li>
-                <li class="dev"><a href="app-development.html">Development</a></li>
-                <li class="ref"><a href="./sdk/">Reference</a></li>
+          <div class="span3">
+            <div class="sidebar-navx" id="toc">
+              <ul class="nav nav-tabs nav-stacked">
+                <!--nav generated in ./js/docs.js-->
               </ul>
+
+              <!--
+              <ul class="nav nav-tabs nav-stacked">
+                <li class="first"><a href="http://developer-openf2.markitqa.com/Manage">Containers &amp; Apps</a></li>
+                <li class=""><a href="http://developer-openf2.markitqa.com/Manage/Container"><i class="icon-plus"></i> Register Container</a></li>
+                <li class=""><a href="http://developer-openf2.markitqa.com/Manage/App"><i class="icon-plus"></i> Register App</a></li>
+                <li class=""><a href="http://developer-openf2.markitqa.com/Manage/Apis/v1"><i class="icon-bolt"></i> Registry APIs</a></li>
+                <li class="first "><a href="/Resources">Resources</a></li>
+                <li><a href="http://docs.openf2.org/app-development.html" target="_blank"><i class="icon-book"></i> F2 Docs: Development</a></li>
+                <li><a href="http://docs.openf2.org/sdk" target="_blank"><i class="icon-book"></i> F2.js API Reference</a></li>
+                <li><a href="https://groups.google.com/forum/#!forum/OpenF2" target="_blank"><i class="icon-group"></i> Developer Forum</a></li>
+                <li><a href="http://docs.openf2.org/extending-f2.html" target="_blank"><i class="icon-wrench"></i> Extending F2</a></li>  
+                <li><a href="https://github.com/OpenF2/F2/wiki" target="_blank"><i class="icon-sitemap"></i> F2 Wiki</a></li>
+                <li><a href="https://github.com/OpenF2/F2" target="_blank"><i class="icon-github"></i> F2 on GitHub</a></li>  
+              </ul>-->
           </div>
         </div>
-      </nav>
-    </div>
-
-		<div class="navbar-docs-sections">
-			<div class="container">
-				<a href="javascript:;" data-toggle="collapse" data-target=".nav-collapse.toc">
-					SECTIONS
-					<span class="icon-triangleDown"></span>
-				</a>
-				<div class="collapse nav-collapse toc">
-					<ul id="tocResponsive" class="nav pull-right">
-						<!--nav generated in ./js/docs.js-->
-					</ul>
-				</div>
-			</div>
-		</div>
-
-  </nav>
-</header>
-
-<div class="container">
-  <div class="row">
-    <div class="span3" id="toc">
-        <ul class="nav nav-list">
-          <!--nav generated in ./js/docs.js-->
-        </ul>
-    </div><!--/span3-->
-
-	<div class="span9">
-		<div id="docs">
+        <div class="span9">
+          <div class="page-header">
+            <h2>  Manage Your Containers &amp; Apps</h2>
+          </div>
+          <div class="row page-wrapper" id="docs">
