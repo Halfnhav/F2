@@ -1,6 +1,6 @@
 /**
  * This code is only for the F2 documentation site. Don't use it anywhere else, you really shouldn't.
- * (c) F2 / Markit On Demand 2012
+ * (c) F2 / Markit On Demand 2013
  */
 if (!String.prototype.supplant) {
     String.prototype.supplant = function (o) {
@@ -27,7 +27,7 @@ F2Docs.fn.init = function() {
 	this.navbarDocsHelper();
 	this.bindEvents();
 	this.buildLeftRailToc();
-	this.buildBookmarks();
+	//this.buildBookmarks();
 	this.formatSourceCodeElements();
 
 	$("body").scrollspy();
@@ -175,14 +175,14 @@ F2Docs.fn.buildBookmarks = function(){
 F2Docs.fn.buildLeftRailToc = function(){
 
 	var $toc 			= $('div.span12','div.navbar-docs'),
-		$docsContainer 	= $('#docs'),
+		$docsContainer 	= $('#docs > div.span9'),
 		file 			= location.pathname.split('/').pop(),
 		$sections 		= $('> section', $docsContainer),
 		$sectionsL2		= $sections.filter("section.level2"),//find <section> elements in main content area
 		$sectionsL3		= $sections.filter("section.level3")
-		$navWrap 		= $('<ul class="nav nav-list"></ul>')
-		$listContainer	= $('<ul class="nav nav-list"></ul>'),
-		$pageHeading	= $("h1",$docsContainer);
+		$navWrap 		= $('<ul class="nav nav-tabs nav-stacked"></ul>')
+		$listContainer	= $('<ul class="nav nav-tabs nav-stacked"></ul>'),
+		$pageHeading	= $("h2",$('#docs').prev()).eq(0);
 
 	//build table of contents based on sections within generated markdown file
 	if (!$sections.length) return;
@@ -197,7 +197,7 @@ F2Docs.fn.buildLeftRailToc = function(){
 
 	//need to add very first section (page title/<h1>)
 	if ("development" != this.currentPage){
-		$listContainer.append("<li class='active'><a href='{url}'>{label}</a></li>".supplant({url: this._getPgUrl($pageHeading.attr("id")), label: $pageHeading.text()}));
+		$listContainer.append("<li class='first'><a href='{url}'>{label}</a></li>".supplant({url: this._getPgUrl($pageHeading.attr("id")), label: $pageHeading.text()}));
 	}
 
 	//loop over all sections, build nav based on <h2>'s inside the <section.level2>
@@ -232,12 +232,12 @@ F2Docs.fn.buildLeftRailToc = function(){
 	}
 
 	//cache inner nav for this page
-	this.$currentSectionNavList = ("development" == this.currentPage) ? $navWrap.find('li.active > ul.nav-list') : $navWrap;
+	this.$currentSectionNavList = ("development" == this.currentPage) ? $navWrap.find('li.active > ul.nav-tabs') : $navWrap;
 
 	//append links
 	$('#toc').html($navWrap);
 	var $responsiveItems = $navWrap.children().clone();
-	$('ul', $responsiveItems).removeClass('nav-list').addClass('navinset');
+	$('ul', $responsiveItems).removeClass('nav-tabs').addClass('navinset');
 	$('#tocResponsive').append($responsiveItems);
 
 	//add click event
@@ -289,7 +289,7 @@ F2Docs.fn._watchScrollSpy = function(){
 		var $activeNav = ("development" == this.currentPage) ? $nav.parent() : $('li',$nav).first();
 		if (document.body.scrollTop < 1 && !$activeNav.hasClass('active')){
 			$('li',$nav).removeClass('active');
-			$activeNav.addClass('active');
+			//$activeNav.addClass('active');
 		}
 	},this));
 }

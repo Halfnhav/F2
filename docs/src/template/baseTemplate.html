@@ -6,8 +6,6 @@
 $for(author-meta)$
   <meta name="author" content="$author-meta$">
 $endfor$
-  <meta name="dcterms.date" content="21 March 2013">
-  <meta name="gitbranch" content="master">
   <meta name="description" content="F2: The Open Financial Framework. An open framework created for the financial services industry.">
   <meta name="keywords" content="F2, Open F2, Open Financial Framework, Markit, Markit On Demand, MOD, web, web framework, apps, context, container, Hub">
   <meta name="robots" content="all, index, follow" />
@@ -20,17 +18,23 @@ $for(header-includes)$
 $endfor$
 </head>
 <body data-spy="scroll" data-target="#toc" data-offset="0">
+
 $for(include-before)$
 $include-before$
 $endfor$
+
 $if(title)$
-<header>
-<h1 class="title">$title$</h1>
-</header>
+<div class="title page-header">
+  <h2>$title$</h2>
+</div>
+<div class="row page-wrapper" id="docs">
+  <div class="span9">
 $endif$
+
 $body$
 $for(include-after)$
 $include-after$
 $endfor$
+
 </body>
 </html>
