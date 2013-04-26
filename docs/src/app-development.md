@@ -1,6 +1,6 @@
 % App Development
 
-<p class="lead">You've come to the right place if you want to start building F2 apps. Before continuing, make sure you've [cloned the F2 repository on GitHub](https://github.com/OpenF2/F2#quick-start) or [downloaded the latest framework build](index.html#get-started) (v1.1.1). Secondly, [read about the F2 Framework](index.html#framework). There are a few important concepts to help you better understand apps, containers and context.</p>
+<p class="lead">You've come to the right place if you want to start building F2 apps. Before continuing, make sure you've [cloned the F2 repository on GitHub](https://github.com/OpenF2/F2#quick-start) or [downloaded the latest framework build](#get-started) (v{{sdk.version}}). Secondly, [read about the F2 Framework](index.html#framework). There are a few important concepts to help you better understand apps, containers and context.</p>
 
 F2 apps are synonymous with modules, widgets and portlets. Think charts, portfolios, trade tickets, and screeners. F2 apps only need to be programmed once, no matter where they will be used. To start, F2 Apps are either:
 
@@ -10,6 +10,8 @@ F2 apps are synonymous with modules, widgets and portlets. Think charts, portfol
 	<dt>Data App</dt>
 	<dd>A data app is a content feed available in industry-standard formats including JSON, JSONP, RSS or app developer-designed XML.</dd>
 </dl>
+
+![](./img/apps.png "F2 apps")
 
 For the purposes of the documentation on this page, we'll focus on developing **display apps**. Browse to [The Basics: Framework](index.html#apps) for more background information about F2 apps.
 
