@@ -33,7 +33,14 @@ F2Docs.fn.init = function() {
 	$("body").scrollspy();
 
 	//affix left nav
-	$("#toc > ul.nav").affix();
+	setTimeout(function(){
+		$("#toc > ul.nav").affix({
+			offset:{ 
+				top: 120,
+				bottom: 270 
+			}
+		});
+	},250);
 }
 
 /**
