@@ -3,21 +3,25 @@
 
 <p class="lead">F2 is an open and free web integration framework designed to help you and other financial industry participants develop custom solutions that combine the best tools and content from multiple providers into one, privately-labeled, seamlessly integrated front-end. </p>
 
+<p>
+<img src="./img/bankeo/bankeo_cascade.png" align="right" width="300">
+
 The [essential components](#framework) defined by the F2 specification are the container, apps, context and store&mdash;all supported under the hood by **F2.js**, a JavaScript SDK which provides an extensible foundation powering all F2-based web applications.
+</p>
 
 You can use the F2 framework to build:
 
-* Customized solutions that include only the content, tools, and providers that you want,
-* Private-labeled solutions that are true to your design standards and branding elements,
-* User-customized experiences that remember each user's entitlements and preferences,
-* Reusable apps that you can develop once and use cross-platform on web, tablet and mobile devices,
-* A multi-vendor environment that enables each vendor to use a shared authentication scheme and to communicate context to each other so that they can act together as one.
+* **Customized solutions** that include only the content, tools, and providers that you want,
+* **Private-labeled** solutions that are true to your design standards and branding elements,
+* **User-customized** experiences that remember each user's entitlements and preferences,
+* **Reusable** apps that you can develop once and use cross-platform on web, tablet and mobile devices,
+* A **multi-vendor environment** that enables each vendor to use a shared authentication scheme and to communicate context to each other so that they can act together as one.
 
 * * * *
 
 ## Who
 
-The F2 concept was born in Boulder, Colorado at [Markit On Demand](http://www.markitondemand.com) (MOD). F2 was brought to life through conversations with industry partners who individually express common frustrations and desire a coordinated solution.
+The F2 concept was born in Boulder, Colorado, at [Markit On Demand](http://www.markitondemand.com) (MOD). F2 was brought to life through conversations with industry partners who individually express common frustrations and desire a coordinated solution.
 
 MOD's development team is committed to following the technical guidelines defined by the F2 standard and actively contribute enhancements to future F2 releases.
 

@@ -95,7 +95,8 @@ F2Docs.fn.navbarDocsHelper = function(){
  * Don't reorder these without consequences in this._getCurrentDevSubSection()
  * Adding to them is fine.
  */
-F2Docs.fn.devSubSections = {
+F2Docs.fn.subSections = {
+	'About F2': 			'index.html',
 	"App Development": 		"app-development.html",
 	"Container Development":"container-development.html",
 	"Extending F2": 		"extending-f2.html",
@@ -103,14 +104,14 @@ F2Docs.fn.devSubSections = {
 };
 
 /**
- * Lookup in devSubSections for right URL
+ * Lookup in subSections for right URL
  */
 F2Docs.fn._getCurrentDevSubSection = function(){
 	var file = location.pathname.split('/').pop(),
 		currSection,
 		counter = 0;
 
-	$.each(this.devSubSections,$.proxy(function(idx,item){
+	$.each(this.subSections,$.proxy(function(idx,item){
 		if (item == file) {
 			currSection = counter;
 		}
@@ -121,14 +122,14 @@ F2Docs.fn._getCurrentDevSubSection = function(){
 }
 
 /**
- * Lookup in devSubSections NAME for insite
+ * Lookup in subSections NAME for insite
  */
 F2Docs.fn._getCurrentDevSectionName = function(){
 	var file = location.pathname.split('/').pop(),
 		currSection,
 		counter = 0;
 
-	$.each(this.devSubSections,$.proxy(function(idx,item){
+	$.each(this.subSections,$.proxy(function(idx,item){
 		if (item == file) {
 			currSection = idx;
 		}
@@ -145,11 +146,11 @@ F2Docs.fn.getName = function(){
 /**
  * When on Development, we need some special nav.
  */
-F2Docs.fn._buildDevSubSectionsHtml = function(){
+F2Docs.fn._buildSubSectionsHtml = function(){
 	var html = [];
 
-	$.each(this.devSubSections,function(idx,item){
-		html.push("<li><a href='{url}' data-parent='true'>{label}</a></li>".supplant({url:item, label: idx}));
+	$.each(this.subSections,function(idx,item){
+		html.push("<li class='first'><a href='{url}' data-parent='true'>{label}</a></li>".supplant({url:item, label: idx}));
 	});
 
 	return html.join('');
@@ -182,14 +183,14 @@ F2Docs.fn.buildBookmarks = function(){
 F2Docs.fn.buildLeftRailToc = function(){
 
 	var $toc 			= $('div.span12','div.navbar-docs'),
-		$docsContainer 	= $('#docs > div.span9'),
+		$docsContainer 	= $('#docs'),
 		file 			= location.pathname.split('/').pop(),
 		$sections 		= $('> section', $docsContainer),
 		$sectionsL2		= $sections.filter("section.level2"),//find <section> elements in main content area
-		$sectionsL3		= $sections.filter("section.level3")
-		$navWrap 		= $('<ul class="nav nav-tabs nav-stacked"></ul>')
-		$listContainer	= $('<ul class="nav nav-tabs nav-stacked"></ul>'),
-		$pageHeading	= $("h2",$('#docs').prev()).eq(0);
+		$sectionsL3		= $sections.filter("section.level3"),
+		$navWrap 		= $('<ul class="nav nav-tabs nav-stacked"></ul>'),
+		listContainer	= [],
+		$pageHeading	= $('h2','div.page-header');
 
 	//build table of contents based on sections within generated markdown file
 	if (!$sections.length) return;
@@ -197,15 +198,8 @@ F2Docs.fn.buildLeftRailToc = function(){
 	//quickly touch <h1> and add an ID attr. this regex removes all spaces and changes to dashes.
 	$pageHeading.prop("id", $pageHeading.text().toLowerCase().replace(/\s+/g, '-'));
 
-	//OK, we are on the development section, add the sub-sections
-	if ("development" == this.currentPage){
-		$navWrap.append(this._buildDevSubSectionsHtml());
-	}
-
-	//need to add very first section (page title/<h1>)
-	if ("development" != this.currentPage){
-		$listContainer.append("<li class='first'><a href='{url}'>{label}</a></li>".supplant({url: this._getPgUrl($pageHeading.attr("id")), label: $pageHeading.text()}));
-	}
+	//OK, add the sub-sections
+	$navWrap.append(this._buildSubSectionsHtml());
 
 	//loop over all sections, build nav based on <h2>'s inside the <section.level2>
 	$sections.each($.proxy(function(idx,item){
@@ -214,35 +208,30 @@ F2Docs.fn.buildLeftRailToc = function(){
 			sectionTitle = $item.children().first().text(),
 			sectionId = $item.prop("id"),
 			isActive = (sectionId == String(location.hash.replace("#",""))) ? " class='active'" : "",
-			$li;
+			li;
 
-		$li = $("<li{isActive}><a href='#{id}' data-id='{id}'>{label}</a></li>".supplant({id: sectionId, label: sectionTitle, isActive: isActive}));
+		li = "<li{isActive}><a href='#{id}' data-id='{id}'>{label}</a></li>".supplant({id: sectionId, label: sectionTitle, isActive: isActive});
 
-		$listContainer.append($li);
+		listContainer.push(li);
 	},this));
 
 	//now, determine *where* to insert links. 
 	// if they are Level2 
-	if ($listContainer.find("li").length){
-		if ("development" == this.currentPage){
-			$navWrap
-				.find("li")
-				.eq(this._getCurrentDevSubSection())
-				.addClass("active")
-				.append($listContainer)
-			;
-		} else {
-			//we are on Basics, and have no subnav. 
-			//navWrap *is* the list.
-			$navWrap = $listContainer;
-		}
+	if ($navWrap.find("li").length){
+		$navWrap
+			.find("li")
+			.eq(this._getCurrentDevSubSection())
+			.addClass("first")
+			.after(listContainer.join(''))
+		;
 	}
 
 	//cache inner nav for this page
-	this.$currentSectionNavList = ("development" == this.currentPage) ? $navWrap.find('li.active > ul.nav-tabs') : $navWrap;
+	this.$currentSectionNavList = $navWrap;
 
 	//append links
 	$('#toc').html($navWrap);
+
 	var $responsiveItems = $navWrap.children().clone();
 	$('ul', $responsiveItems).removeClass('nav-tabs').addClass('navinset');
 	$('#tocResponsive').append($responsiveItems);

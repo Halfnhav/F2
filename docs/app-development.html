@@ -47,12 +47,13 @@
         <div class="pull-right">
             <nav>         
                 <ul class="unstyled">
-                    <li data-hide="minWidth768"><a href="http://www.openf2.org/">Home</a></li>
-                    <li class="active" data-hide="minWidth768"><a href="./">Docs</a></li>
+                    <li><a href="http://www.openf2.org/">Home</a></li>
+                    <li class="active"><a href="./">Docs</a></li>
                     <li><a href="http://www.openf2.org/examples">Examples</a></li>
                     <li><a href="http://developer-openf2.markitqa.com/">Developer</a></li>
-                    <li data-hide="minWidth768"><a href="http://blog.openf2.org" target="_blank">Blog</a></li>
+                    <li><a href="http://blog.openf2.org" target="_blank">Blog</a></li>
                     <li><i class="icon-github"></i> <a href="http://github.com/OpenF2/F2">GitHub Project</a></li>
+                    <li>v1.1.2</li>
                 </ul>
             </nav>
         </div>
@@ -65,9 +66,7 @@
             <div class="row">
                 <div class="span3">
                     <div class="sidebar-nav" id="toc">
-                        <ul class="nav nav-tabs nav-stacked">
                         <!--nav generated in ./js/docs.js-->
-                        </ul>
                     </div>
                 </div><!--//span3-->
                 
@@ -76,8 +75,9 @@
 <div class="title page-header">
   <h2>App Development</h2>
 </div>
-<div class="row page-wrapper" id="docs">
+<div class="row page-wrapper">
   <div class="span9">
+    <div id="docs">
 
 <p class="lead">
 You've come to the right place if you want to start building F2 apps. Before continuing, make sure you've <a href="https://github.com/OpenF2/F2#quick-start">cloned the F2 repository on GitHub</a> or <a href="index.html#get-started">downloaded the latest framework build</a> (v1.1.1). Secondly, <a href="index.html#framework">read about the F2 Framework</a>. There are a few important concepts to help you better understand apps, containers and context.
@@ -923,7 +923,8 @@ In the absence of a function in your <code>appclass.js</code>, F2 will be unable
 <hr>
 </section>
 </section>
-							<div id="disqus_thread"></div>
+								<div id="disqus_thread"></div>
+							</div><!--//span9content-->
 						</div><!--//span9-->
 					</div><!--//#docs-->
 				</div><!--//span9-->

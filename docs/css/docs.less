@@ -101,7 +101,7 @@ header {
 		height: @headerHeight;
 		font-size: 20px;
 		vertical-align: middle;
-		background: transparent url('../img/F2_logo.png') left center no-repeat;
+		background: transparent url('../img/F2_logo_docs.png') left center no-repeat;
 		margin-top: 10px;
 		margin-bottom: 15px;
 		text-decoration: none;
@@ -144,33 +144,6 @@ header {
 	margin-right: 5px;
 }
 
-.media-list.landing {
-	a {
-		width: 25px;
-		height: 25px;
-		text-align: center;
-	}
-
-	i {
-		font-size: 25px;
-	}
-
-	.moder {
-		.media {
-			i {
-				font-size: 16px;
-			}
-			
-			.media-heading {
-				font-size: 90%;
-			}
-		}
-		.media-body .media {
-			margin-top: 2px;
-		}
-	}
-}
-
 .page-wrapper {
 	margin-top: 10px;
 	padding-bottom: 60px;
@@ -182,44 +155,6 @@ header {
 	//to pull it in a bit
 	.span1 + .span4 {
 		margin-left: 5px;
-	}
-}
-
-//top/side right of home/landing page
-.homeNav {
-	.border-radius(5px);
-	background-color: @white;
-	.box-shadow(0 0 5px rgba(0,0,0,.15));
-
-	li {
-		border-bottom: 1px solid @grayLighter;
-	}
-
-	li:last-child {
-		border-bottom: 0;
-	}
-
-	a {
-		display: block;
-		padding: 10px 15px;
-		color: @f2blue;
-		.transition(background 0.25s linear);//fade in on-hover
-	}
-
-	a h5 {
-		font-weight: bold;
-		margin: 0;
-	}
-
-	a p {
-		margin: 0;
-		font-size: 90%;
-		color: @gray;
-	}
-
-	a:hover {
-		text-decoration: none;
-		background-color: @grayLighter;
 	}
 }
 
@@ -237,7 +172,7 @@ header {
 		font-weight: bold;
 		color: @grayDark;
 		padding-left: 12px;
-		cursor: default;
+		//cursor: default;
 	}
 
 	.nav-tabs > li:first-child a:hover,
@@ -273,45 +208,16 @@ header {
 		.opacity(100);
 	}
 
-}
-
-.latestCode {
-
-	margin-top: 20px;
-	margin-bottom: 20px;
-
-	.span12 {
-		.border-radius(5px);
-		background-color: @f2blue;
-		font-size: 16px;
-		color: @white;
-		font-weight: lighter;
-		.transition(background 0.25s linear);//fade in on-hover
-		.box-shadow(0 0 5px rgba(0,0,0,.15));
+	.affix {
+	  top: 15px;
 	}
 
-	.span12:hover {
-		//background-color: @blueDark;
-		//.buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+	.affix-bottom {
+		position: absolute;
+		top: auto;
+		bottom: 270px;
 	}
 
-	.span3 {
-		text-align: center;
-		padding: 20px 0;
-	}
-
-	.largeCode {
-		#font > #family > .monospace;
-	}
-
-	a {
-		color: @white;
-		text-decoration: underline;
-	}
-
-	a:hover{
-		text-decoration: none;
-	}
 }
 
 .pageArea {
@@ -329,9 +235,7 @@ header {
 		padding: 0 15px;
 	}
 
-	.span9 .lead,
-	.span9 p,
-	.span9 ul {
+	#docs {
 		padding-right: 15px;
 	}
 
@@ -352,190 +256,11 @@ header {
 	}
 }
 
-.apipage {
-	h4 {
-		margin-top: 30px;
-	}
-}
-
-article time {
-	font-size: 12px;
-	color: @grayLight;
-}
-
-.media {
-	.media-object-link {
-		height: 40px;
-		width: 40px;
-	}
-}
-
-.columnHeader {
-
-	.clearfix();
-	border-bottom: 1px solid #eee;
-	margin-bottom: 15px;
-
-	h3 {
-		.pull-left();
-		margin: 0;
-		font-size: 20px;
-	}
-
-	.btn-toolbar {
-		.pull-right();
-	}
-}
-
-.f2info {
-
-	.border-radius(5px);
-
-	.media-heading {
-		.clearfix();
-	}
-
-/*
-	.dropdown-menu > li > a {
-		font-size: 90%;
-		line-height: 14px;
-	}
-
-	.active .dropdown-menu > li > a {
-		font-size: 100%;
-		line-height: 20px;
-	}
-*/
-	.btn-link {
-		color: @grayLight;
-		text-decoration: none;
-		&:hover {
-			text-decoration: none;
-		}
-	}
-
-	code {
-		color: @gray;
-		font-size: 90%;
-	}
-}
-
-//within dropdowns, <a class=danger> will look like a danger button when hovered
-.dropdown-menu > li > a.danger:hover {
-	.buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
-}
-
-//when containers or apps == 0, show user big button to start adding
-.containsZeroItems {
-	position: relative;
-
-	.addNew {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		margin: 0 auto;
-		text-align: center;
-
-		a {
-			//find vertical center
-			margin-top: (162px/2 - 20); // 162==bg image height, 20==large button height
-		}
-	}
-}
-
-.textareaCode {
-	font-family: @monoFontFamily;
-	font-size: 12px;
-	width: 95%;
-}
-
-#appViewModal, 
-#appConfigModal {
-
-	section {
-		min-height: 40px;//for loading spinner
-	}
-
-	textarea.code {
-		.textareaCode();
-	}
-
-	.nav {
-		margin-bottom: 10px;
-	}
-}
-
-form .help-block, 
-form .help-inline {
-	font-size: 12px;
-}
-
-fieldset.views {
-
-	//for custom view checkbox on step 3 of app registration
-	.input-prepend {
-		margin-left: 10px;
-		padding-top: 5px;
-	}
-}
-
-//on Account page, this field as a prepended "@"
-#DeveloperGitHubUserName {
-	width: 179px;
-}
-
 p.lead {
 	code {
 		font-size: 16px;
 		font-weight: 200;
 		color: @gray;
-	}
-}
-
-#addAppIntro.modal {
-	width: 660px;
-}
-
-.thumbnails {
-
-	.span3 + .span3 {
-		margin-left: 10px;
-	}
-
-	p {
-		font-size: 90%;
-	}
-
-	a {
-		display: block;
-		&:hover {
-			text-decoration: none;
-		}
-	}
-
-	[class*="icon"] {
-		font-size: 125px;
-		display: block;
-		margin: 0 auto;
-		color: @f2blue;
-	}
-
-	.icon-book {
-		color: #b1e27e;
-	}
-
-	.icon-wrench {
-		color: #fabb5d;
-	}
-
-	.icon-road {
-		color: @f2blue;
-	}
-
-	.icon-sitemap {
-		color: @grayDark;
 	}
 }
 
@@ -565,47 +290,6 @@ footer {
 	.opacity(50);
 }
 
-// must use div.tagging because of IE+respond.js
-div.tagging {
-	background-color: @inputBackground;
-	border: 1px solid @inputBorder;
-	.border-radius(@inputBorderRadius);
-	.box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
-	color: @gray;
-	display: inline-block;
-	font-size: @baseFontSize;
-	margin-bottom: @baseLineHeight / 2;
-	margin-left: 0;
-	padding: 2px 6px;
-	.transition(~"border linear .2s, box-shadow linear .2s");
-	vertical-align: middle;
-
-	.list {
-		list-style: none;
-		margin-left: 0;
-	}
-
-	.list-item {
-		float: left;
-		padding: 2px 3px;
-	}
-
-	.remove {
-		color: inherit;
-	}
-
-	input,
-	input:hover,
-	input:active,
-	input:focus {
-		border: 0;
-		box-shadow: none;
-		padding: 0;
-		outline:0px !important;
-		-webkit-appearance:none;
-	}
-}
-
 //****************************************************************************
 //RESPONSIVE 
 
@@ -614,7 +298,7 @@ div.tagging {
 @media only screen and (-webkit-min-device-pixel-ratio:2){
 	header #logo {
 		background-size: 52px 34px;
-		background-image: url('../img/F2_logo@2x.png');
+		background-image: url('../img/F2_logo_docs@2x.png');
 	}
 }
 
@@ -640,30 +324,6 @@ div.tagging {
 			margin-left: 15px;
 		}
 	}
-
-	//when containers or apps == 0, show user big button to start adding
-	.containsZeroItems {
-		.addNew {
-			a {
-				//find vertical center
-				margin-top: (201px/2 - 20); // 201==bg image height, 20==large button height
-			}
-		}
-	}
-
-	//on Account page, this field as a prepended "@"
-	#DeveloperGitHubUserName {
-		width: 228px;
-	}
-
-	.thumbnails {
-		.span3 + .span3 {
-			margin-left: 20px;
-		}
-		p {
-			font-size: 100%;
-		}
-	}
 }
 
 //979 breakpoint
@@ -685,14 +345,11 @@ div.tagging {
 		}
 	}
 
-	.latestCode {
-		.span12 {
-			font-size: 13px;
-		}
-	}
-
 	.sidebar-nav {
 		font-size: 13px;
+		.nav-tabs {
+			width: 165px;
+		}
 	}
 
 	//this makes TwBs grid work with our span9
@@ -710,55 +367,6 @@ div.tagging {
 			margin-left: 20px;
 		}
 	}
-
-	//when containers or apps == 0, show user big button to start adding
-	.containsZeroItems {
-		.addNew {
-			a {
-				//find vertical center
-				margin-top: (137px/2 - 20); // 137==bg image height, 20==large button height
-				//override btn-large
-				.btn();
-				.btn-success();
-			}
-		}
-	}
-
-	//on Account page, this field as a prepended "@"
-	#DeveloperGitHubUserName {
-		width: 124px;
-	}
-
-	.thumbnails {
-		.span3 + .span3 {
-			margin-left: 5px;
-		}
-
-		.caption {
-			padding: 6px;
-		}
-
-		h3 {
-			font-size: 18px;
-		}
-
-		p {
-			font-size: 80%;
-		}
-
-		[class*="icon"] {
-			font-size: 100px;
-		}
-
-		img {
-			height: 102px;
-		}
-	}
-
-	#twitter-timeline {
-		.hideVisually();
-	}
-
 }
 
 //tablets & smaller
@@ -783,18 +391,6 @@ div.tagging {
 		padding-right: 20px;
 	}
 
-	.latestCode {
-		.span12 {
-			font-size: 16px;
-		}
-		.span3 {
-			border-bottom: 1px solid @blueDark;
-		}
-		.span3:last-child {
-			border-bottom-width: 0;
-		}
-	}
-
 	//util
 	.addedLRPadding {
 		padding-left: 20px;
@@ -807,6 +403,9 @@ div.tagging {
 
 	.sidebar-nav {
 		margin-right: 10px;
+		.nav-tabs {
+			width: auto;
+		}
 	}
 
 	.pageArea {
@@ -832,50 +431,9 @@ div.tagging {
 			}
 		}
 	}
-
-	#addAppIntro.modal {
-		width: auto;
-	}
-
-	//when containers or apps == 0, show user big button to start adding
-	.containsZeroItems {
-		.addNew {
-			a {
-				//override btn-large
-				.btn();
-				.btn-success();
-			}
-		}
-	}
-
-	//on Account page, this field as a prepended "@"
-	#DeveloperGitHubUserName {
-		width: 100%;
-	}
-
-	.thumbnails {
-		.span3 + .span3 {
-			margin-left: inherit;
-		}
-	}
-
-	#twitter-timeline {
-		.hideVisually();
-	}
 }
 
 @media (max-width: 480px) {
-
-
-	//when containers or apps == 0, show user big button to start adding
-	.containsZeroItems {
-		.addNew {
-			a {
-				//find vertical center
-				margin-top: (144px/2 - 20); // 144==bg image height, 20==button height
-			}
-		}
-	}
 
 }
 
