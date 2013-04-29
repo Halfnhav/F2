@@ -30,9 +30,7 @@ F2Docs.fn.init = function() {
 	//this.buildBookmarks();
 	this.formatSourceCodeElements();
 
-	$("body").scrollspy();
-
-	//affix left nav
+	//affix & scrollspy left nav
 	setTimeout(function(){
 		$("#toc > ul.nav").affix({
 			offset:{ 
@@ -40,6 +38,7 @@ F2Docs.fn.init = function() {
 				bottom: 270 
 			}
 		});
+		$("body").scrollspy();
 	},250);
 }
 
