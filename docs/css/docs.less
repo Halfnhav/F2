@@ -8,6 +8,7 @@
 //variables
 @headerHeight: 37px;
 
+//pandoc wraps images in <figure>
 figure {
 	margin: 0;
 }
@@ -139,6 +140,33 @@ header {
 			}
 		}
 	}
+
+	.nav-trigger {
+		display: inline-block;
+		width: 40px;
+		height: 100%;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		-webkit-transform: translate3d(0, 0, 0);
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		-webkit-touch-callout: none;
+
+		.bars {
+			height: 100%;
+
+			li {
+				display: block;
+				height: 3px;
+				width: 20px;
+				background: #FFF;
+				margin: 0 auto 3px;
+				-webkit-box-shadow: 0 0 3px #555555;
+				box-shadow: 0 0 3px #555555;
+			}
+		}
+	}
+
 }
 
 #authenticatedInfo {
@@ -442,3 +470,4 @@ footer {
 }
 
 @import "./prettify.less";
+@import "./jquery.navobile.less";

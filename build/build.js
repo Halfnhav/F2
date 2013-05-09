@@ -344,8 +344,9 @@ function js() {
 function less() {
 	console.log('Compiling LESS...');
 	exec(
-		'lessc ./template/less/bootstrap.less > ../css/F2.css --compress | lessc ./template/less/bootstrap-docs.less > ../css/F2.Docs.css --compress | lessc ./template/less/bootstrap-sdk.less > ../css/F2.Sdk.css --compress',
-		{ cwd: './docs/src' },
+		'lessc ./less/bootstrap.less > ./docs.css',
+		//'lessc ./template/less/bootstrap.less > ../css/F2.css --compress | lessc ./template/less/bootstrap-docs.less > ../css/F2.Docs.css --compress | lessc ./template/less/bootstrap-sdk.less > ../css/F2.Sdk.css --compress',
+		{ cwd: './docs/css' },
 		function(error, stdout, stderr){
 			if (error){
 				die(error);

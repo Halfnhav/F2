@@ -4,7 +4,7 @@
             <a id="logo" href="./">Docs</a>
         </div>
         <div class="pull-right">
-            <nav>         
+            <nav id="primary-nav">         
                 <ul class="unstyled">
                     <li><a href="http://www.openf2.org/">Home</a></li>
                     <li class="active"><a href="./">Docs</a></li>
@@ -15,6 +15,14 @@
                     <li>v{{sdk.version}}</li>
                 </ul>
             </nav>
+            <div class="navbar navobile-mobile-only">
+                <a class="btn btn-navbar" id="show-navobile">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+            </div>
+
         </div>
     </div>
 </header>
@@ -23,7 +31,7 @@
     <div class="row pageArea">
         <div class="span12">
             <div class="row">
-                <div class="span3">
+                <div class="span3" data-hide="minWidth768x">
                     <div class="sidebar-nav" id="toc">
                         <!--nav generated in ./js/docs.js-->
                     </div>
