@@ -378,7 +378,7 @@ F2Docs.fn.insite = function(){
 	if (F2.gitbranch() !== 'master') { return; }
 	window._waq = window._waq || []; 
 	(function() {
-		var domain = 'insite.wallst.com'; 
+		var domain = 'oda.markitondemand.com'; 
 		_waq.push(['_setup', {reportingid: '544506', domain: domain}]); 
 		var wa = document.createElement('script'); 
 		wa.type = 'text/javascript'; 
