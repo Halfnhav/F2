@@ -4,7 +4,7 @@
 AsyncSpec.prototype.beforeEachReloadF2 = function(callback) {
 	this.beforeEach(function(done) {
 		$.ajax({
-			url: '../sdk/f2.debug.js',
+			url: '../sdk/f2.min.js',
 			dataType: 'script',
 			complete: function() {
 				callback && callback();
@@ -12,6 +12,22 @@ AsyncSpec.prototype.beforeEachReloadF2 = function(callback) {
 			}
 		});
 	});
+};
+
+/**
+ *
+ */
+itConditionally = function(condition, desc, func) {
+	if (condition) {
+		return jasmine.getEnv().it(desc, func);
+	} else {
+		var el = document.getElementById('tests-skipped');
+		var count = Number(el.getAttribute('data-count')) + 1;
+		el.innerHTML = 'Skipping ' + count + ' spec' + ((count > 1) ? 's' : '');
+		el.setAttribute('data-count', count);
+		el.style.display = 'block';
+		return jasmine.getEnv().xit(desc, func);
+	}
 };
 
 /**
