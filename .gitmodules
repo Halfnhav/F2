@@ -1,0 +1,3 @@
+[submodule "docs/src/template/twbootstrap"]
+	path = docs/src/template/twbootstrap
+	url = git@github.com:twitter/bootstrap.git
